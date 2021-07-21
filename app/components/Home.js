@@ -6,7 +6,8 @@ import Col from 'react-bootstrap/Col';
 import InventoryList from './InventoryList';
 import InventoryItem from './InventoryItem';
 import JSONToCSVConvertor from '../lib/JSONToCSV';
-import { PlusCircleIcon } from '@primer/octicons-react';
+import { PlusCircleIcon, GearIcon } from '@primer/octicons-react';
+import Settings from './Settings';
 
 const initialState = {
   loaded: false,
@@ -27,20 +28,21 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
-    this.state.data.locations = [
-      'Master Bedroom',
-      'Office',
-      'Safe 1',
-      'Safe 2',
-    ];
-    this.state.data.types = ['Mint', 'Proof', 'Uncirculated', 'Circulated'];
-    this.state.data.mints = [
-      'Philadelphia',
-      'Denver',
-      'San Francisco',
-      'West Point',
-    ];
-    this.state.data.grades = ['70', '69', '68', '67', '66', '65'];
+    //test data
+    // this.state.data.locations = [
+    //   'Master Bedroom',
+    //   'Office',
+    //   'Safe 1',
+    //   'Safe 2',
+    // ];
+    // this.state.data.types = ['Mint', 'Proof', 'Uncirculated', 'Circulated'];
+    // this.state.data.mints = [
+    //   'Philadelphia',
+    //   'Denver',
+    //   'San Francisco',
+    //   'West Point',
+    // ];
+    // this.state.data.grades = ['70', '69', '68', '67', '66', '65'];
 
     this.configureEditorKit();
 
@@ -53,7 +55,9 @@ export default class Home extends React.Component {
     this.displayEditForm = this.displayEditForm.bind(this);
     this.deleteInventoryItem = this.deleteInventoryItem.bind(this);
     this.onAddInventory = this.onAddInventory.bind(this);
-    //TODO add form for adding new locations, types,mints, grades
+    this.addSetting = this.addSetting.bind(this);
+    this.deleteSetting = this.deleteSetting.bind(this);
+    this.toggleSettings = this.toggleSettings.bind(this);
   }
 
   configureEditorKit = () => {
@@ -250,6 +254,42 @@ export default class Home extends React.Component {
     );
   }
 
+  addSetting(setting, whichSetting) {
+    if (setting === '' || setting === undefined) {
+      alert('Connect add blank setting!');
+    } else {
+      if (!this.state.data[whichSetting].includes(setting)) {
+        let newSettings = this.state.data[whichSetting].concat(setting);
+        let newData = this.state.data;
+        newData[whichSetting] = newSettings;
+        this.setState({ data: newData }, () => {
+          this.saveInventory();
+        });
+      } else {
+        alert('Setting already exists!');
+      }
+    }
+  }
+  deleteSetting(setting, whichSetting) {
+    let newSettings = this.state.data[whichSetting];
+    const index = newSettings.indexOf(setting);
+    if (index > -1 && setting !== '' && setting !== undefined) {
+      newSettings.splice(index, 1);
+      let newData = this.state.data;
+      newData.locations = newSettings;
+      this.setState({ data: newData }, () => {
+        this.saveInventory();
+      });
+    } else {
+      alert('Error Deleting setting!');
+    }
+  }
+  toggleSettings() {
+    this.setState({
+      displaySettings: !this.state.displaySettings,
+    });
+  }
+
   render() {
     return (
       <div className="sn-component">
@@ -277,10 +317,22 @@ export default class Home extends React.Component {
                 Export
               </Button>
             </Col>
+            <Col>
+              <Button onClick={this.toggleSettings} variant="success">
+                <GearIcon size={16} />
+              </Button>
+            </Col>
           </Row>
         </div>
         <div id="content">
-          {this.state.loaded ? (
+          {this.state.displaySettings ? (
+            <Settings
+              addSetting={this.addSetting}
+              deleteSetting={this.deleteSetting}
+              settings={this.state.data}
+              toggleSettings={this.toggleSettings}
+            />
+          ) : this.state.loaded ? (
             this.state.addInventory ? (
               <InventoryItem
                 locations={this.state.data.locations}
