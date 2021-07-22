@@ -2,6 +2,9 @@
 
 An extension editor for [Standard Notes ](https://standardnotes.org)to catalog coin inventory in a solid and secure way. Numismatists rejoice!
 
+## Demo
+![](https://github.com/tryonlinux/Coin-Inventory-sn/blob/26910b6fa8b23919ab27fb1ec7f2e0bb562eaca2/Coin%20Inventory.gif)
+
 ## Install
 
 - link to listed published url be posted later
