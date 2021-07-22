@@ -79,21 +79,18 @@ export default class Home extends React.Component {
           }
         }
         if (entries.length > 0 && entries[0].data.inventory) {
-          this.setState(
-            {
-              loaded: true,
-              addInventory: false,
-              editInventory: false,
-              data: {
-                inventory: entries[0].data.inventory,
-                locations: entries[0].data.locations,
-                types: entries[0].data.types,
-                mints: entries[0].data.mints,
-                grades: entries[0].data.grades,
-              },
+          this.setState({
+            loaded: true,
+            addInventory: false,
+            editInventory: false,
+            data: {
+              inventory: entries[0].data.inventory,
+              locations: entries[0].data.locations,
+              types: entries[0].data.types,
+              mints: entries[0].data.mints,
+              grades: entries[0].data.grades,
             },
-            () => alert(JSON.stringify(this.state))
-          );
+          });
         } else {
           this.setState({
             loaded: true,
