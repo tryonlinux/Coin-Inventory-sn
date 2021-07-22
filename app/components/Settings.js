@@ -68,7 +68,9 @@ class Settings extends Component {
           <Col>
             <Form>
               <Form.Group controlId="whichSettings">
-                <Form.Label>Location</Form.Label>
+                <Form.Label>
+                  {this.toTitleCase(this.state.whichSettings)}
+                </Form.Label>
                 <Form.Control
                   as="select"
                   name="whichSettings"

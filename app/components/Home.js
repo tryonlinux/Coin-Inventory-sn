@@ -78,23 +78,22 @@ export default class Home extends React.Component {
             });
           }
         }
-        if (
-          entries.length > 0 &&
-          entries[0].data.inventory &&
-          entries[0].data.inventory.length > 0
-        ) {
-          this.setState({
-            loaded: true,
-            addInventory: false,
-            editInventory: false,
-            data: {
-              inventory: entries[0].data.inventory,
-              locations: entries[0].data.locations,
-              types: entries[0].data.types,
-              mints: entries[0].data.mints,
-              grades: entries[0].data.grades,
+        if (entries.length > 0 && entries[0].data.inventory) {
+          this.setState(
+            {
+              loaded: true,
+              addInventory: false,
+              editInventory: false,
+              data: {
+                inventory: entries[0].data.inventory,
+                locations: entries[0].data.locations,
+                types: entries[0].data.types,
+                mints: entries[0].data.mints,
+                grades: entries[0].data.grades,
+              },
             },
-          });
+            () => alert(JSON.stringify(this.state))
+          );
         } else {
           this.setState({
             loaded: true,
@@ -276,7 +275,7 @@ export default class Home extends React.Component {
     if (index > -1 && setting !== '' && setting !== undefined) {
       newSettings.splice(index, 1);
       let newData = this.state.data;
-      newData.locations = newSettings;
+      newData[whichSetting] = newSettings;
       this.setState({ data: newData }, () => {
         this.saveInventory();
       });
