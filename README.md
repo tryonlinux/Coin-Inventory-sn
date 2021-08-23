@@ -11,11 +11,10 @@ An extension editor for [Standard Notes ](https://standardnotes.org)to catalog c
 
 ## Install
 
-- link to listed published url be posted later
+Install Link: https://listed.to/p/CHKU8wzt3s
 
 ## To-Do
 
-- [ ] Publish to listed.to
 - [ ] Ability to edit locations, mints, types, and grades
 - [ ] Add ability to add pictures (filesafe)
 - [ ] Add ability to view pictures
