@@ -11,7 +11,7 @@ An extension editor for [Standard Notes ](https://standardnotes.org)to catalog c
 
 ## Install
 
-Install Link: https://listed.to/p/CHKU8wzt3s
+Install Link: https://listed.to/p/EPBjDZyl3y
 
 ## To-Do
 
