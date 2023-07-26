@@ -1,4 +1,4 @@
-# Coin-Inventory-sn
+dfas# Coin-Inventory-sn
 
 An extension editor for [Standard Notes ](https://standardnotes.org)to catalog coin inventory in a solid and secure way. Numismatists rejoice!
 
@@ -26,7 +26,7 @@ http-server -p 8004 --cors
 ```
 
 Starts editor locally in browser
-
+afasdfadsfads
 ```
 npm run start
 ```
