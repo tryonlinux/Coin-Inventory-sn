@@ -1,4 +1,4 @@
-# Coin-Inventory-sn
+# Coin-Inventory-sn -- Archived, feel free to fork and self-host 
 
 An extension editor for [Standard Notes ](https://standardnotes.org)to catalog coin inventory in a solid and secure way. Numismatists rejoice!
 
